@@ -16,6 +16,7 @@ import datetime
 import random
 import string
 import re
+import shutil
 
 # Prefix for this run
 TIMESTAMP = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -186,4 +187,8 @@ if __name__ == "__main__":
     # Combine audio and video
     if not args.skip_merge:
         merge_audio_video(output_filename)
+
+    # Clean temp folder
+    print("Cleaning temp folder")
+    shutil.rmtree(os.path.join(TEMP_DIR, OUT_PREFIX))
 
