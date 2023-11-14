@@ -142,6 +142,9 @@ def merge_audio_video(output_filename):
     else:
         sp.call(command)
 
+    print("Cleaning temp folder")
+    shutil.rmtree(os.path.join(TEMP_DIR, OUT_PREFIX))
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-u", "--url", action="store", help="master json url")
@@ -187,8 +190,3 @@ if __name__ == "__main__":
     # Combine audio and video
     if not args.skip_merge:
         merge_audio_video(output_filename)
-
-    # Clean temp folder
-    print("Cleaning temp folder")
-    shutil.rmtree(os.path.join(TEMP_DIR, OUT_PREFIX))
-
